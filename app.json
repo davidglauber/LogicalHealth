@@ -16,13 +16,15 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "requireFullScreen": true
+      "requireFullScreen": true,
+      "bundleIdentifier": "com.telaviv.logicalhealth"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.telaviv.logicalhealth"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -34,6 +36,11 @@
           "initialOrientation": "DEFAULT"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "383ab46d-62d6-4b45-8a41-e59874060444"
+      }
+    }
   }
 }

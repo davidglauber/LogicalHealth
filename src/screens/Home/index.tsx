@@ -31,6 +31,7 @@ export default function Home() {
         placeholder="Search by using name, city or state"
         onChangeText={onChangeSearch}
         value={searchQuery}
+        testID="search-bar"
       />
 
       <FlashList

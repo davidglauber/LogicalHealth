@@ -36,7 +36,7 @@ export default function CardUser({ dataProfile }: CardUserInterface) {
   const { navigate }: NavigationType = useNavigation();
 
   return (
-    <CardUserContainer onPress={() => navigate("UserDetails", { dataProfile })}>
+    <CardUserContainer onPress={() => navigate("UserDetails", { dataProfile })} testID="unique-user">
       <CardUserImage
         source={{
           uri: dataProfile.avatar

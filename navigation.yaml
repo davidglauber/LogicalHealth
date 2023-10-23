@@ -1,0 +1,9 @@
+appId: com.telaviv.logicalhealth
+---
+- launchApp
+- tapOn:
+    id: search-bar
+- inputText: "John"
+- hideKeyboard
+- tapOn: "John Doe, 123-456-7890"
+- stopApp
