@@ -12,12 +12,12 @@ import {
   CardUserTitle,
 } from "./styles";
 
-interface UserInfoInterface {
+export interface UserInfoInterface {
   name: string;
   phoneNumber: string;
   email: string;
   avatar: string;
-  address: { street: string; city: string; state: string } | {};
+  address: { street: string; city: string; state: string } | undefined;
 }
 
 interface CardUserInterface {
