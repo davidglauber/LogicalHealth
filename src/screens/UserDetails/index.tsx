@@ -1,6 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { Linking, Text } from "react-native";
 import {
   DividerSections,
   UserDetailsContainer,
@@ -11,12 +11,12 @@ import {
   UserDetailsTitle,
 } from "./styles";
 import * as ScreenOrientation from "expo-screen-orientation";
+import { Button } from "react-native-paper";
 
 export default function UserDetails() {
   const { params }: any = useRoute();
   const profile = params?.dataProfile;
   const [isLandscape, setIsLandscape] = useState<boolean>(false);
-  
 
   useEffect(() => {
     console.log("PARAMS: " + JSON.stringify(params));
@@ -30,12 +30,14 @@ export default function UserDetails() {
       }
     };
 
-    ScreenOrientation.addOrientationChangeListener(handleOrientationChange)
+    ScreenOrientation.addOrientationChangeListener(handleOrientationChange);
 
     return () => {
-      ScreenOrientation.removeOrientationChangeListeners()
-    }
+      ScreenOrientation.removeOrientationChangeListeners();
+    };
   }, []);
+
+  const addressMaps = `${profile?.address?.street}, ${profile?.address?.city}, ${profile?.address?.state}`;
 
   return (
     <UserDetailsContainer>
@@ -47,7 +49,9 @@ export default function UserDetails() {
         }}
       />
 
-      <UserDetailsInfoView style={isLandscape && {width: '90%', marginBottom: '7%'}}>
+      <UserDetailsInfoView
+        style={isLandscape && { width: "90%", marginBottom: "7%" }}
+      >
         <UserDetailsTitle>User Information</UserDetailsTitle>
         <DividerSections />
         <UserDetailsName>{profile.name}</UserDetailsName>
@@ -70,6 +74,39 @@ export default function UserDetails() {
         ) : (
           <Text>Address is empty</Text>
         )}
+
+        <DividerSections />
+
+        <Button
+          icon="phone"
+          mode="contained-tonal"
+          onPress={() => Linking.openURL(`tel:${profile.phoneNumber}`)}
+        >
+          <Text>Call to {profile.name}</Text>
+        </Button>
+        <Button
+          icon="email"
+          mode="contained-tonal"
+          onPress={() => Linking.openURL(`mailto:${profile.email}`)}
+          style={{ marginTop: 10 }}
+        >
+          <Text>Email to {profile.name}</Text>
+        </Button>
+
+        <Button
+          icon="map"
+          mode="contained-tonal"
+          onPress={() =>
+            Linking.openURL(
+              `https://www.google.com/maps/search/${encodeURIComponent(
+                addressMaps
+              )}`
+            )
+          }
+          style={{ marginTop: 10 }}
+        >
+          <Text>See {profile.name}'s location</Text>
+        </Button>
       </UserDetailsInfoView>
     </UserDetailsContainer>
   );
