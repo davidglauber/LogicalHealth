@@ -1,6 +1,6 @@
 import { PaperProvider } from "react-native-paper";
 import StackNavigator from "./src/navigation/StackNavigator";
-import { LogBox } from "react-native";
+import { LogBox, StatusBar } from "react-native";
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import { api } from "./src/redux/api";
 
@@ -12,6 +12,8 @@ export default function App() {
       <PaperProvider>
         <StackNavigator />
       </PaperProvider>
+
+      <StatusBar barStyle="dark-content" backgroundColor="#ffffff"/>
     </ApiProvider>
   );
 }

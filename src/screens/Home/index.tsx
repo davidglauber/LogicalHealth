@@ -1,17 +1,15 @@
 import { FlashList } from "@shopify/flash-list";
 import React, { useState } from "react";
+import { Searchbar } from "react-native-paper";
 import CardUser, { UserInfoInterface } from "../../components/CardUser";
-import { HomeContainer, HomeLogo, HomeSnackBar } from "./styles";
-import { Searchbar, Snackbar } from "react-native-paper";
 import { useGetPersonsQuery } from "../../redux/api";
-import { RFValue } from "react-native-responsive-fontsize";
+import { HomeContainer, HomeLogo, HomeSnackBar } from "./styles";
 
 export default function Home() {
-  const { data, isLoading } = useGetPersonsQuery({});
+  const { data, isLoading, error }: any = useGetPersonsQuery();
 
   const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query: string) => setSearchQuery(query);
-
   const filteredData = data?.persons?.filter(
     (item: UserInfoInterface) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -45,6 +43,12 @@ export default function Home() {
       {isLoading && (
         <HomeSnackBar visible={isLoading} onDismiss={() => {}}>
           Getting Users...
+        </HomeSnackBar>
+      )}
+
+      {error && error?.status !== 200 && (
+        <HomeSnackBar visible={true} onDismiss={() => {}}>
+          {error?.data?.message}
         </HomeSnackBar>
       )}
     </HomeContainer>

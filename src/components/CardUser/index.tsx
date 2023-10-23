@@ -46,8 +46,8 @@ export default function CardUser({ dataProfile }: CardUserInterface) {
       />
 
       <CardUserInfo>
-        <CardUserTitle>{dataProfile.name}</CardUserTitle>
-        <CardUserSubtitle>{dataProfile.phoneNumber}</CardUserSubtitle>
+        <CardUserTitle>{dataProfile.name ? dataProfile.name : 'Not Informed'}</CardUserTitle>
+        <CardUserSubtitle>{dataProfile.phoneNumber ? dataProfile.phoneNumber : 'Not Informed'}</CardUserSubtitle>
       </CardUserInfo>
 
       <CardUserFooter>

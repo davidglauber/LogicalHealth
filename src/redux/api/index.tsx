@@ -6,7 +6,7 @@ export const api = createApi({
   refetchOnFocus: true, /* refetchOnFocus refetch always when the app is focused again */
   refetchOnReconnect: true, /* refetchOnReconnect refetch always when the network is connected again */
   endpoints: (builder) => ({
-    getPersons: builder.query({
+    getPersons: builder.query<any, void>({
       query: () => ({
         url: "health/persons",
         method: "GET",

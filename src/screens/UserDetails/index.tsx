@@ -1,6 +1,8 @@
 import { useRoute } from "@react-navigation/native";
+import * as ScreenOrientation from "expo-screen-orientation";
 import React, { useEffect, useState } from "react";
 import { Linking, Text } from "react-native";
+import { Button } from "react-native-paper";
 import {
   DividerSections,
   UserDetailsContainer,
@@ -10,8 +12,6 @@ import {
   UserDetailsName,
   UserDetailsTitle,
 } from "./styles";
-import * as ScreenOrientation from "expo-screen-orientation";
-import { Button } from "react-native-paper";
 
 export default function UserDetails() {
   const { params }: any = useRoute();
@@ -19,8 +19,6 @@ export default function UserDetails() {
   const [isLandscape, setIsLandscape] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("PARAMS: " + JSON.stringify(params));
-
     const handleOrientationChange = async () => {
       const orientation = await ScreenOrientation.getOrientationAsync();
       if (orientation === 3 || orientation === 4) {

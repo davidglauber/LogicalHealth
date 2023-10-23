@@ -29,7 +29,7 @@ export const CardUserFooter = styled.View`
 export const CardUserImage = styled.Image`
     width: ${RFValue(100)}px;
     height: ${RFValue(100)}px;
-    background-color: #f6f6f6;
+    background-color: #f2f2f2;
     padding: ${RFValue(5)}px;
     border-radius: ${RFValue(20)}px;
 `
