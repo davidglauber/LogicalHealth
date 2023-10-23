@@ -56,8 +56,8 @@ export default function UserDetails() {
         <UserDetailsGenericText>{profile.phoneNumber}</UserDetailsGenericText>
         <UserDetailsGenericText>{profile.email}</UserDetailsGenericText>
         <DividerSections />
-
-        {profile.address ? (
+        
+        {Object.keys(profile.address).length ? (
           <>
             <UserDetailsGenericText>
               {profile.address.street}
