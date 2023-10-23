@@ -5,6 +5,8 @@
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
+    "firstTest:linux": "cd android && ./gradlew assembleRelease && cd .. && adb install ./android/app/build/outputs/apk/release/app-release.apk && maestro test navigation.yaml",
+    "test": "maestro test navigation.yaml",
     "ios": "expo run:ios",
     "web": "expo start --web"
   },
